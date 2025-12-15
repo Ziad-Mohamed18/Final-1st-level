@@ -4,8 +4,12 @@ body {
     background-color: #f4f7f6;
     color: #333;
     padding: 20px;
-    direction: rtl; /* لضمان دعم اللغة العربية */
-    text-align: right;
+    
+    /* [1] التعديل الأساسي: تغيير اتجاه الكتابة إلى LTR */
+    direction: ltr; 
+    
+    /* [2] محاذاة النص على اليسار */
+    text-align: left;
 }
 
 .schedule-container {
@@ -27,32 +31,38 @@ h2 {
 /* تنسيقات الجدول */
 table {
     width: 100%;
-    border-collapse: separate; /* استخدام هذا لـ border-radius على الصفوف */
-    border-spacing: 0 10px; /* مسافة بين الصفوف */
+    border-collapse: separate; 
+    border-spacing: 0 10px;
 }
 
 thead th {
     background-color: #007bff;
     color: white;
     padding: 15px;
-    text-align: right;
+    
+    /* [3] محاذاة محتوى رأس الجدول على اليسار */
+    text-align: left; 
+    
     font-weight: bold;
 }
 
+/* [4] تعديل الزوايا الدائرية لرأس الجدول */
 thead th:first-child {
-    border-radius: 8px 0 0 0; /* حافة دائرية لزاوية الجدول */
+    /* الزاوية الدائرية الآن في اليسار العلوي */
+    border-radius: 8px 0 0 0; 
 }
 
 thead th:last-child {
+    /* الزاوية الدائرية الآن في اليمين العلوي */
     border-radius: 0 8px 0 0;
 }
 
 tbody tr {
     background-color: #ffffff;
-    border-radius: 8px; /* حافة دائرية للصف */
-    transition: all 0.3s ease; /* للتأثيرات السلسة */
+    border-radius: 8px; 
+    transition: all 0.3s ease; 
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 tbody tr:hover {
@@ -68,30 +78,31 @@ tbody td {
 
 /* تنسيق الصف المُميز (مضاف بواسطة JavaScript) */
 .highlight {
-    background-color: #fff3cd !important; /* لون تمييز ساطع */
+    background-color: #fff3cd !important; 
     border: 2px solid #ffc107;
     font-weight: bold;
     color: #856404;
 }
 
-/* تخصيص ألوان الأسطر حسب المادة (اختياري لكنه جميل) */
-.subject-math0 td:first-child { background-color: #e0f7fa; border-right: 5px solid #00bcd4; }
-.subject-cs-fund td:first-child { background-color: #fce4ec; border-right: 5px solid #e91e63; }
-.subject-discrete td:first-child { background-color: #fff3e0; border-right: 5px solid #ff9800; }
-.subject-calc td:first-child { background-color: #e3f2fd; border-right: 5px solid #2196f3; }
-.subject-prog td:first-child { background-color: #f3e5f5; border-right: 5px solid #9c27b0; }
-.subject-physics td:first-child { background-color: #e8f5e9; border-right: 5px solid #4caf50; }
-.subject-history td:first-child { background-color: #fbe9e7; border-right: 5px solid #ff5722; }
+/* [5] تخصيص ألوان الأسطر - نقل شريط اللون من اليمين إلى اليسار (border-left) */
+.subject-math0 td:first-child { background-color: #e0f7fa; border-left: 5px solid #00bcd4; border-right: none;}
+.subject-cs-fund td:first-child { background-color: #fce4ec; border-left: 5px solid #e91e63; border-right: none;}
+.subject-discrete td:first-child { background-color: #fff3e0; border-left: 5px solid #ff9800; border-right: none;}
+.subject-calc td:first-child { background-color: #e3f2fd; border-left: 5px solid #2196f3; border-right: none;}
+.subject-prog td:first-child { background-color: #f3e5f5; border-left: 5px solid #9c27b0; border-right: none;}
+.subject-physics td:first-child { background-color: #e8f5e9; border-left: 5px solid #4caf50; border-right: none;}
+.subject-history td:first-child { background-color: #fbe9e7; border-left: 5px solid #ff5722; border-right: none;}
 
-/* تنسيق الجوال (Mobile Responsiveness) */
+
+/* تنسيق الجوال (Mobile Responsiveness) - تعديل الاتجاه والمحاذاة */
 @media screen and (max-width: 600px) {
     table, thead, tbody, th, td, tr {
-        display: block; /* تغيير طريقة العرض إلى Block */
+        display: block; 
     }
 
     thead tr {
         position: absolute;
-        top: -9999px; /* إخفاء رأس الجدول */
+        top: -9999px; 
         left: -9999px;
     }
 
@@ -104,18 +115,21 @@ tbody td {
     tbody td {
         border: none;
         position: relative;
-        padding-right: 50%; /* مساحة لعنوان العمود */
-        text-align: left;
+        padding-left: 50%; /* المساحة لعنوان العمود الآن على اليسار */
+        padding-right: 15px; /* مسافة على اليمين */
+        text-align: right; /* محاذاة القيمة على اليمين في وضع الجوال */
     }
 
-    /* عرض عنوان العمود قبل القيمة */
+    /* عرض عنوان العمود قبل القيمة (ليصبح العنوان على اليسار) */
     tbody td:before {
         content: attr(data-label);
         position: absolute;
-        right: 6px;
+        left: 6px; /* التعديل هنا: تحديد الموقع على اليسار */
+        right: auto; /* إزالة القيمة السابقة */
         width: 45%;
-        padding-left: 10px;
+        padding-right: 10px;
         font-weight: bold;
         color: #007bff;
+        text-align: left; /* التعديل هنا: محاذاة العنوان نفسه على اليسار */
     }
 }
