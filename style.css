@@ -5,10 +5,8 @@ body {
     color: #333;
     padding: 20px;
     
-    /* [1] التعديل الأساسي: تغيير اتجاه الكتابة إلى LTR */
+    /* [LTR Setting 1] تغيير اتجاه الكتابة إلى LTR */
     direction: ltr; 
-    
-    /* [2] محاذاة النص على اليسار */
     text-align: left;
 }
 
@@ -39,22 +37,18 @@ thead th {
     background-color: #007bff;
     color: white;
     padding: 15px;
-    
-    /* [3] محاذاة محتوى رأس الجدول على اليسار */
+    /* [LTR Setting 2] محاذاة رأس الجدول على اليسار */
     text-align: left; 
-    
     font-weight: bold;
 }
 
-/* [4] تعديل الزوايا الدائرية لرأس الجدول */
+/* [LTR Setting 3] تعديل الزوايا الدائرية لرأس الجدول */
 thead th:first-child {
-    /* الزاوية الدائرية الآن في اليسار العلوي */
-    border-radius: 8px 0 0 0; 
+    border-radius: 8px 0 0 0; /* يسار علوي */
 }
 
 thead th:last-child {
-    /* الزاوية الدائرية الآن في اليمين العلوي */
-    border-radius: 0 8px 0 0;
+    border-radius: 0 8px 0 0; /* يمين علوي */
 }
 
 tbody tr {
@@ -84,7 +78,7 @@ tbody td {
     color: #856404;
 }
 
-/* [5] تخصيص ألوان الأسطر - نقل شريط اللون من اليمين إلى اليسار (border-left) */
+/* [LTR Setting 4] تخصيص ألوان الأسطر - شريط اللون على اليسار (border-left) */
 .subject-math0 td:first-child { background-color: #e0f7fa; border-left: 5px solid #00bcd4; border-right: none;}
 .subject-cs-fund td:first-child { background-color: #fce4ec; border-left: 5px solid #e91e63; border-right: none;}
 .subject-discrete td:first-child { background-color: #fff3e0; border-left: 5px solid #ff9800; border-right: none;}
@@ -94,7 +88,7 @@ tbody td {
 .subject-history td:first-child { background-color: #fbe9e7; border-left: 5px solid #ff5722; border-right: none;}
 
 
-/* تنسيق الجوال (Mobile Responsiveness) - تعديل الاتجاه والمحاذاة */
+/* [Responsive Setting] تنسيق الجوال (Mobile Responsiveness) */
 @media screen and (max-width: 600px) {
     table, thead, tbody, th, td, tr {
         display: block; 
@@ -115,21 +109,25 @@ tbody td {
     tbody td {
         border: none;
         position: relative;
-        padding-left: 50%; /* المساحة لعنوان العمود الآن على اليسار */
-        padding-right: 15px; /* مسافة على اليمين */
-        text-align: right; /* محاذاة القيمة على اليمين في وضع الجوال */
+        /* مساحة لعنوان العمود (Label) على اليسار */
+        padding-left: 50%; 
+        padding-right: 15px;
+        /* محاذاة القيمة على اليمين */
+        text-align: right; 
     }
 
-    /* عرض عنوان العمود قبل القيمة (ليصبح العنوان على اليسار) */
+    /* عرض عنوان العمود (Label) */
     tbody td:before {
         content: attr(data-label);
         position: absolute;
-        left: 6px; /* التعديل هنا: تحديد الموقع على اليسار */
-        right: auto; /* إزالة القيمة السابقة */
+        /* تحديد الموقع على اليسار */
+        left: 6px; 
+        right: auto; 
         width: 45%;
         padding-right: 10px;
         font-weight: bold;
         color: #007bff;
-        text-align: left; /* التعديل هنا: محاذاة العنوان نفسه على اليسار */
+        /* محاذاة العنوان نفسه على اليسار */
+        text-align: left; 
     }
 }
