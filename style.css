@@ -1,0 +1,121 @@
+/* تنسيقات عامة */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+    direction: rtl; /* لضمان دعم اللغة العربية */
+    text-align: right;
+}
+
+.schedule-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* تنسيقات الجدول */
+table {
+    width: 100%;
+    border-collapse: separate; /* استخدام هذا لـ border-radius على الصفوف */
+    border-spacing: 0 10px; /* مسافة بين الصفوف */
+}
+
+thead th {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: right;
+    font-weight: bold;
+}
+
+thead th:first-child {
+    border-radius: 8px 0 0 0; /* حافة دائرية لزاوية الجدول */
+}
+
+thead th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+tbody tr {
+    background-color: #ffffff;
+    border-radius: 8px; /* حافة دائرية للصف */
+    transition: all 0.3s ease; /* للتأثيرات السلسة */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+}
+
+tbody tr:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+tbody td {
+    padding: 15px;
+    border-right: none;
+    border-left: none;
+}
+
+/* تنسيق الصف المُميز (مضاف بواسطة JavaScript) */
+.highlight {
+    background-color: #fff3cd !important; /* لون تمييز ساطع */
+    border: 2px solid #ffc107;
+    font-weight: bold;
+    color: #856404;
+}
+
+/* تخصيص ألوان الأسطر حسب المادة (اختياري لكنه جميل) */
+.subject-math0 td:first-child { background-color: #e0f7fa; border-right: 5px solid #00bcd4; }
+.subject-cs-fund td:first-child { background-color: #fce4ec; border-right: 5px solid #e91e63; }
+.subject-discrete td:first-child { background-color: #fff3e0; border-right: 5px solid #ff9800; }
+.subject-calc td:first-child { background-color: #e3f2fd; border-right: 5px solid #2196f3; }
+.subject-prog td:first-child { background-color: #f3e5f5; border-right: 5px solid #9c27b0; }
+.subject-physics td:first-child { background-color: #e8f5e9; border-right: 5px solid #4caf50; }
+.subject-history td:first-child { background-color: #fbe9e7; border-right: 5px solid #ff5722; }
+
+/* تنسيق الجوال (Mobile Responsiveness) */
+@media screen and (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block; /* تغيير طريقة العرض إلى Block */
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px; /* إخفاء رأس الجدول */
+        left: -9999px;
+    }
+
+    tbody tr {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+    }
+
+    tbody td {
+        border: none;
+        position: relative;
+        padding-right: 50%; /* مساحة لعنوان العمود */
+        text-align: left;
+    }
+
+    /* عرض عنوان العمود قبل القيمة */
+    tbody td:before {
+        content: attr(data-label);
+        position: absolute;
+        right: 6px;
+        width: 45%;
+        padding-left: 10px;
+        font-weight: bold;
+        color: #007bff;
+    }
+}
